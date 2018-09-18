@@ -1,5 +1,5 @@
 <?php
-// показывать или нет выполненные задачи
+// показывать или нет TaskStatusные задачи
 $show_complete_tasks = rand(0, 1);
 
 // массив проектов
@@ -8,40 +8,40 @@ $projects = ["Входящие", "Учеба", "Работа", "Домашние
 // массив задач
 $tasks = [
   0 => [
-        "Задача" => "Собеседование в IT компании",
-        "Дата_выполнения" => "01.12.2018",
-        "Категория" => "Работа",
-        "Выполнен" => "Нет"
+        "TaskTopic" => "Собеседование в IT компании",
+        "TaskDate" => "01.12.2018",
+        "TaskCategory" => "Работа",
+        "TaskStatus" => false
   ],
   1 => [
-        "Задача" => "Выполнить тестовое задание",
-        "Дата_выполнения" => "25.12.2018",
-        "Категория" => "Работа",
-        "Выполнен" => "Нет"
+        "TaskTopic" => "Выполнить тестовое задание",
+        "TaskDate" => "25.12.2018",
+        "TaskCategory" => "Работа",
+        "TaskStatus" => false
   ],
   2 => [
-        "Задача" => "Сделать задание первого раздела",
-        "Дата_выполнения" => "21.12.2018",
-        "Категория" => "Учеба",
-        "Выполнен" => "Да"
+        "TaskTopic" => "Сделать задание первого раздела",
+        "TaskDate" => "21.12.2018",
+        "TaskCategory" => "Учеба",
+        "TaskStatus" => true
   ],
   3 => [
-        "Задача" => "Встреча с другом",
-        "Дата_выполнения" => "22.12.2018",
-        "Категория" => "Входящие",
-        "Выполнен" => "Нет"
+        "TaskTopic" => "Встреча с другом",
+        "TaskDate" => "22.12.2018",
+        "TaskCategory" => "Входящие",
+        "TaskStatus" => false
   ],
   4 => [
-        "Задача" => "Купить корм для кота",
-        "Дата_выполнения" => "Нет",
-        "Категория" => "Домашние дела",
-        "Выполнен" => "Нет"
+        "TaskTopic" => "Купить корм для кота",
+        "TaskDate" => "Нет",
+        "TaskCategory" => "Домашние дела",
+        "TaskStatus" => false
   ],
   5 => [
-        "Задача" => "Заказать пиццу",
-        "Дата_выполнения" => "Нет",
-        "Категория" => "Домашние дела",
-        "Выполнен" => "Нет"
+        "TaskTopic" => "Заказать пиццу",
+        "TaskDate" => "Нет",
+        "TaskCategory" => "Домашние дела",
+        "TaskStatus" => false
   ]
 ];
 
@@ -130,29 +130,26 @@ $tasks = [
                 </div>
 
                 <table class="tasks">
+
                   <?php foreach ($tasks as $key => $val): ?>
-                    <tr class="tasks__item task">
 
-
+                    <tr class="tasks__item task <?php if ($val[TaskStatus]): ?>task--completed<?php endif; ?>">
 
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden task__checkbox"
-
-                                type="checkbox">
-                                <span class="checkbox__text"><?php echo "$val[Задача]"?></span>
+                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox">
+                                <span class="checkbox__text"><?php echo "$val[TaskTopic]"?></span>
                             </label>
                         </td>
 
                         <td class="task__file">
-                            <a class="download-link" href="#">Home.psd</a>
+                            <a class="download-link" href="#">link</a>
                         </td>
 
-                        <td class="task__date"><?php echo "$val[Дата_выполнения]"?></td>
-
-
+                        <td class="task__date"><?php echo "$val[TaskDate]"?></td>
 
                     </tr>
+
                     <?php endforeach; ?>
 
                     <?php if ($show_complete_tasks): ?>
@@ -169,6 +166,7 @@ $tasks = [
                         </td>
                       </tr>
                   <?php endif; ?>
+
                 </table>
             </main>
         </div>
