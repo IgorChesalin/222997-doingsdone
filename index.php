@@ -1,11 +1,11 @@
 <?php
-// показывать или нет TaskStatusные задачи
+// показывать или нет TaskStatusные задачи тест
 $show_complete_tasks = rand(0, 1);
 
-// массив проектов
+// массив проектов (название проекта)
 $projects = ["Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
 
-// массив задач
+// массив задач список задач в виде массива
 $tasks = [
   [
         "TaskTopic" => "Собеседование в IT компании",
@@ -33,17 +33,27 @@ $tasks = [
   ],
   [
         "TaskTopic" => "Купить корм для кота",
-        "TaskDate" => "Нет",
+        "TaskDate" => null,
         "TaskCategory" => "Домашние дела",
         "TaskStatus" => false
   ],
   [
         "TaskTopic" => "Заказать пиццу",
-        "TaskDate" => "Нет",
+        "TaskDate" => null,
         "TaskCategory" => "Домашние дела",
         "TaskStatus" => false
   ]
 ];
+
+function count_tasks($tasks_list, $project_name) {
+  $count = 0;
+  foreach ($tasks_list as $value) {
+    if ($project_name === $value["TaskCategory"]) {
+      $count++;
+    }
+  }
+  return $count;
+}
 
 ?>
 <!DOCTYPE html>
@@ -90,10 +100,10 @@ $tasks = [
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                      <?php foreach ($projects as $key => $val): ?>
+                      <?php foreach ($projects as $project_name): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?php echo $val?></a>
-                            <span class="main-navigation__list-item-count">0</span>
+                            <a class="main-navigation__list-item-link" href="#"><?= $project_name?></a>
+                            <span class="main-navigation__list-item-count"><?= count_tasks($tasks, $project_name)?></span>
                         </li>
                       <?php endforeach; ?>
                     </ul>
