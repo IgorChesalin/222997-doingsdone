@@ -34,7 +34,7 @@
         <td class="task__select">
             <label class="checkbox task__checkbox">
                 <input class="checkbox__input visually-hidden task__checkbox" <?php if ($val["TaskStatus"]): ?>checked<?php endif; ?> type="checkbox">
-                <span class="checkbox__text"><?php echo $val["TaskTopic"]?></span>
+                <span class="checkbox__text"><?= strip_tags($val["TaskTopic"]);?></span>
             </label>
         </td>
 
@@ -43,7 +43,7 @@
         </td>
 
         <td class="task__date">
-            <?php echo $val["TaskDate"]?>
+            <?= strip_tags($val["TaskDate"]);?>
         </td>
 
     </tr>
