@@ -34,16 +34,16 @@
         <td class="task__select">
             <label class="checkbox task__checkbox">
                 <input class="checkbox__input visually-hidden task__checkbox" <?php if ($val["TaskStatus"]): ?>checked<?php endif; ?> type="checkbox">
-                <span class="checkbox__text"><?= strip_tags($val["TaskTopic"]);?></span>
+                <span class="checkbox__text"><?= htmlspecialchars($val["TaskTopic"]);?></span>
             </label>
         </td>
 
         <td class="task__file">
-            <a class="download-link" href="#">link</a>
+            <a class="download-link" href="#"></a>
         </td>
 
         <td class="task__date">
-            <?= strip_tags($val["TaskDate"]);?>
+            <?= htmlspecialchars($val["TaskDate"]);?>
         </td>
 
     </tr>
