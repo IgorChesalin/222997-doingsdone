@@ -9,37 +9,37 @@ $projects = ["Входящие", "Учеба", "Работа", "Домашние
 $tasks = [
   [
         "TaskTopic" => "Собеседование в IT компании",
-        "TaskDate" => "01.12.2018",
+        "TaskDeadline" => "01.12.2018",
         "TaskCategory" => "Работа",
         "TaskStatus" => false
   ],
   [
         "TaskTopic" => "Выполнить тестовое задание",
-        "TaskDate" => "25.12.2018",
+        "TaskDeadline" => "25.09.2018",
         "TaskCategory" => "Работа",
-        "TaskStatus" => false
-  ],
-  [
-        "TaskTopic" => "Сделать задание первого раздела",
-        "TaskDate" => "21.12.2018",
-        "TaskCategory" => "Учеба",
         "TaskStatus" => true
   ],
   [
+        "TaskTopic" => "Сделать задание первого раздела",
+        "TaskDeadline" => "26.09.2018",
+        "TaskCategory" => "Учеба",
+        "TaskStatus" => false
+  ],
+  [
         "TaskTopic" => "Встреча с другом",
-        "TaskDate" => "22.12.2018",
+        "TaskDeadline" => "22.12.2018",
         "TaskCategory" => "Входящие",
         "TaskStatus" => false
   ],
   [
         "TaskTopic" => "Купить корм для кота",
-        "TaskDate" => null,
+        "TaskDeadline" => null,
         "TaskCategory" => "Домашние дела",
         "TaskStatus" => false
   ],
   [
         "TaskTopic" => "Заказать пиццу",
-        "TaskDate" => null,
+        "TaskDeadline" => null,
         "TaskCategory" => "Домашние дела",
         "TaskStatus" => false
   ]
