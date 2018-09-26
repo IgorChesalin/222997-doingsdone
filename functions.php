@@ -26,5 +26,20 @@ function count_tasks($tasks_list, $project_name) {
   }
   return $count;
 }
+// предикаты
+function is_task_important($task) {
+  if (empty($task["TaskDeadline"])) {
+      return false;
+  }
+
+  $curdate = strtotime (date('d.m.Y'));
+  $taskend = strtotime (date($task["TaskDeadline"]));
+  $dif = floor(($taskend - $curdate) / 3600);
+  if ($dif <= 24 && $task["TaskStatus"] === false) {
+    return true;
+  }
+  return false;
+}
+
 
 ?>

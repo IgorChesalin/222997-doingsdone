@@ -29,7 +29,7 @@
 
     <?php if ($val["TaskStatus"]===false || $show_complete_tasks===1): ?>
 
-    <tr class="tasks__item task <?php if ($val["TaskStatus"]): ?>task--completed<?php endif; ?>">
+    <tr class="tasks__item task <?php if ($val["TaskStatus"]): ?>task--completed<?php endif; ?> <?php if (is_task_important($val)): ?>task--important<?php endif; ?>">
 
         <td class="task__select">
             <label class="checkbox task__checkbox">
@@ -43,7 +43,7 @@
         </td>
 
         <td class="task__date">
-            <?= htmlspecialchars($val["TaskDate"]);?>
+            <?= htmlspecialchars($val["TaskDeadline"]);?>
         </td>
 
     </tr>
