@@ -1,33 +1,34 @@
-CREATE DATABASE doingsdone
+CREATE DATABASE `222997-doingsdone`
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
-USE doingsdone;
+USE `222997-doingsdone`;
 
 CREATE TABLE users (
-  user_id INT AUTO_INCREMENT PRIMARY KEY, -- создаем первичный ключ, даем тип число, база заполняет его автоматически, обозначаем, что это первичный ключ
-  email CHAR(128), -- класс короткий текст
-  password CHAR(64), -- максимальная размерность в скобках
-  create_date DATE,
-  contact TEXT
+  id INT AUTO_INCREMENT PRIMARY KEY, -- создаем первичный ключ, даем тип число, база заполняет его автоматически, обозначаем, что это первичный ключ
+  email CHAR(128) NOT NULL, -- класс короткий текст
+  password CHAR(64) NOT NULL, -- максимальная размерность в скобках
+  create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  contact TEXT DEFAULT NULL
 );
 
 CREATE UNIQUE INDEX email ON users(email);
 
 CREATE TABLE projects (
-  project_id INT AUTO_INCREMENT PRIMARY KEY,
-  title CHAR(50),
-  user_id INT
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title CHAR(50) NOT NULL,
+  users_id INT NOT NULL
 );
 
 CREATE TABLE tasks (
-  task_id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT, -- связь
-  project_id INT, -- связь
-  create_date DATE,
-  deadline DATE,
-  done_date DATE,
-  title CHAR,
-  link TEXT,
-  status INT DEFAULT 0
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  users_id INT NOT NULL, -- связь
+  projects_id INT DEFAULT NULL, -- связь
+  create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  deadline DATE DEFAULT NULL,
+  done_date DATE DEFAULT NULL,
+  title CHAR NOT NULL,
+  file CHAR(255)
 );
+
+CREATE INDEX title ON tasks(title);
