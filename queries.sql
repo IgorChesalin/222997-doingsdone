@@ -1,3 +1,5 @@
+USE `222997-doingsdone`;
+
 INSERT INTO users (email, password) VALUES
   ("igor@gmail.com", "12345"),
   ("masha@gmail.com", "54321");
