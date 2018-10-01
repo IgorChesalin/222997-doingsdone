@@ -7,6 +7,7 @@ require('data.php');
 
 // получаем контент с помощью функции шаблонизатора
 $content = include_template('index.php', [
+  // название переменной в шаблоне => значение переменной
   'show_complete_tasks' => $show_complete_tasks,
   'tasks' => $tasks
 ]);
