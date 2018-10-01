@@ -1,20 +1,20 @@
 <?php
 
 function include_template($name, $data) {
-    $name = 'templates/' . $name;
-    $result = '';
+    $name = 'templates/' . $name; // путь к шаблону
+    $result = ''; //будем возвращать пустую строку, независимо от данных/шаблонов
 
-    if (!file_exists($name)) {
-        return $result;
+    if (!file_exists($name)) { //проверяем существует ли файл
+        return $result;//если не сущетсвует возвращаем результат
     }
 
-    ob_start();
-    extract($data);
-    require($name);
+    ob_start(); // все, что должно быть отрисовано ниже - попадет в спец буфер
+    extract($data); // ключ массива => в значение в название переменной
+    require($name); // подключаем наш шаблон (=перенесли наш код в эту функцию), не выводим, а помещаем в буфер
 
-    $result = ob_get_clean();
+    $result = ob_get_clean(); // забираем содержимое буфера и помещаем в переменную резалт
 
-    return $result;
+    return $result; // возвращаем результат отрисовки шаблона
 }
 
 function count_tasks($tasks_list, $project_name) {

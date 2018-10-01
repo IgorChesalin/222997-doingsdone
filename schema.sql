@@ -16,7 +16,7 @@ CREATE UNIQUE INDEX email ON users(email);
 
 CREATE TABLE projects (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  title CHAR(50) NOT NULL,
+  title CHAR(100) NOT NULL,
   users_id INT NOT NULL
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE tasks (
   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   deadline DATE DEFAULT NULL,
   done_date DATE DEFAULT NULL,
-  title CHAR NOT NULL,
+  title CHAR(100) NOT NULL,
   file CHAR(255)
 );
 
