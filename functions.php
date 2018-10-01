@@ -20,7 +20,7 @@ function include_template($name, $data) {
 function count_tasks($tasks_list, $project_name) {
   $count = 0;
   foreach ($tasks_list as $value) {
-    if ($project_name === $value["TaskCategory"]) {
+    if ($project_name === $value["TaskCategory"]) { //обратить внимание на имя project_name
       $count++;
     }
   }
@@ -28,14 +28,14 @@ function count_tasks($tasks_list, $project_name) {
 }
 // предикаты
 function is_task_important($task) {
-  if (empty($task["TaskDeadline"])) {
+  if (empty($task["TaskDeadline"])) {//deadline будет переименован
       return false;
   }
 
   $curdate = strtotime (date('d.m.Y'));
-  $taskend = strtotime (date($task["TaskDeadline"]));
+  $taskend = strtotime (date($task["TaskDeadline"])); //deadline будет переименован
   $dif = floor(($taskend - $curdate) / 3600);
-  if ($dif <= 24 && $task["TaskStatus"] === false) {
+  if ($dif <= 24 && $task["TaskStatus"] === false) { // условие делаем на empty дата закрытия задачи
     return true;
   }
   return false;

@@ -42,6 +42,7 @@
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
+                      <!-- переименовываем,   $project_name будет массив с ключами как в колонке-->
                       <?php foreach ($projects as $project_name): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($project_name);?></a>
