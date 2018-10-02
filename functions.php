@@ -20,7 +20,7 @@ function include_template($name, $data) {
 function count_tasks($tasks_list, $project_name) {
   $count = 0;
   foreach ($tasks_list as $value) {
-    if ($project_name === $value["TaskCategory"]) { //обратить внимание на имя project_name
+    if ($project_name === $value["TaskCategory"]) { //обратить внимание на имя project_name ["TaskCategory"]
       $count++;
     }
   }
