@@ -43,10 +43,10 @@
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
                       <!-- переименовываем,   $project_name будет массив с ключами как в колонке-->
-                      <?php foreach ($projects as $project_name): ?>
+                      <?php foreach ($projects as $project): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($project_name);?></a>
-                            <span class="main-navigation__list-item-count"><?= count_tasks($tasks, $project_name)?></span>
+                            <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($project["title"]);?></a>
+                            <span class="main-navigation__list-item-count"><?= count_tasks($tasks, $project["id"])?></span>
                         </li>
                       <?php endforeach; ?>
                     </ul>

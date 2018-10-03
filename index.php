@@ -2,37 +2,17 @@
 
 // соединяемся с бд
 $con = mysqli_connect("localhost", "root", "", "222997-doingsdone");
-  if ($con == fasle) {
-    print ("Ошибка подключения: " . mysqli_connect_error());
-  }
-  else {
-    print("Соединение установлено");
+  if ($con === false) {
+    die("Ошибка подключения: " . mysqli_connect_error());
   }
 
 // устанавливаем кодировку
 mysqli_set_charset($con, "utf8");
 
-// добавляем нового пользователя
-// $sql = "INSERT INTO users SET email = 'test@php.net', password = 'test'";
-// $result = mysqli_query($con, $sql); // получаем объект результата
-//   if (!$result) {
-// $error = mysqli_error($con);
-//   print("Ошибка MySQL: " . $error);
-// }
-
-// Возвращает идентификатор последней добавленной записи
-// if ($result) {
-// $last_id = mysqli_insert_id($con);
-// }
-
-$sql = "SELECT id, title FROM projects";
-$res = mysqli_query($con, $sql);
-$projects = mysqli_fetch_all($res, MYSQLI_ASSOC);
-// var_dump($rows);
-
 // подключает функции и базу
 require('functions.php');
-// require('data.php');
+require('data.php');
+
 
 // получаем контент с помощью функции шаблонизатора
 $content = include_template('index.php', [

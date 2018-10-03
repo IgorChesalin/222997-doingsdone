@@ -4,45 +4,21 @@ $show_complete_tasks = rand(0, 1);
 $user = ["id" => 1, "name" => "Константин"]; //  подставляем в запросах user[name] или user[id]  -- это наша глобальная переменная
 
 // массив проектов (название проекта)
-$projects = ["Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
+$sql = "SELECT id, title FROM projects";
+$res = mysqli_query($con, $sql);
+  if($res !== false) {
+$projects = mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+ else {
+   $projects = [];
+}
 
 // массив задач список задач в виде массива
-$tasks = [
-  [
-        "TaskTopic" => "Собеседование в IT компании",
-        "TaskDeadline" => "01.12.2018",
-        "TaskCategory" => "Работа",
-        "TaskStatus" => false
-  ],
-  [
-        "TaskTopic" => "Выполнить тестовое задание",
-        "TaskDeadline" => "25.09.2018",
-        "TaskCategory" => "Работа",
-        "TaskStatus" => true
-  ],
-  [
-        "TaskTopic" => "Сделать задание первого раздела",
-        "TaskDeadline" => "26.09.2018",
-        "TaskCategory" => "Учеба",
-        "TaskStatus" => false
-  ],
-  [
-        "TaskTopic" => "Встреча с другом",
-        "TaskDeadline" => "22.12.2018",
-        "TaskCategory" => "Входящие",
-        "TaskStatus" => false
-  ],
-  [
-        "TaskTopic" => "Купить корм для кота",
-        "TaskDeadline" => null,
-        "TaskCategory" => "Домашние дела",
-        "TaskStatus" => false
-  ],
-  [
-        "TaskTopic" => "Заказать пиццу",
-        "TaskDeadline" => null,
-        "TaskCategory" => "Домашние дела",
-        "TaskStatus" => false
-  ]
-];
-?>
+ $sql = "SELECT * FROM tasks";
+ $res = mysqli_query($con, $sql);
+   if($res !== false) {
+ $tasks = mysqli_fetch_all($res, MYSQLI_ASSOC);
+ }
+  else {
+    $tasks = [];
+}
