@@ -20,20 +20,20 @@ function include_template($name, $data) {
 
 function count_tasks($tasks_list, $project_id) {
   $count = 0;
-  foreach ($tasks_list as $task) {
-    if ($project_id === $task["project_id"]) { //обратить внимание на имя project_name
+  foreach ($tasks_list as $tasks) {
+    if ($project_id === $tasks["projects_id"]) { //обратить внимание на имя project_name
       $count++;
     }
   }
   var_dump($project_id);
-  var_dump($task);
+  var_dump($tasks);
   return $count;
 }
 
 
 // предикаты
 function is_task_important($task) {
-  if (empty($task["deadline"])) {//deadline будет переименован
+  if (empty($task["deadline"])) { //deadline будет переименован
       return false;
   }
 
