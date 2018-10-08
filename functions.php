@@ -25,8 +25,8 @@ function count_tasks($tasks_list, $project_id) {
       $count++;
     }
   }
-  var_dump($project_id);
-  var_dump($tasks);
+  // var_dump($project_id);
+  // var_dump($tasks);
   return $count;
 }
 
