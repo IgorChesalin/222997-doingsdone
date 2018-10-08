@@ -1,5 +1,14 @@
 <?php
 
+// соединяемся с бд
+$con = mysqli_connect("localhost", "root", "", "222997-doingsdone");
+  if ($con === false) {
+    die("Ошибка подключения: " . mysqli_connect_error());
+  }
+
+// устанавливаем кодировку
+mysqli_set_charset($con, "utf8");
+
 // подключает функции и базу
 require('functions.php');
 require('data.php');

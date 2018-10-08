@@ -17,25 +17,30 @@ function include_template($name, $data) {
     return $result; // возвращаем результат отрисовки шаблона
 }
 
-function count_tasks($tasks_list, $project_name) {
+
+function count_tasks($tasks_list, $project_id) {
   $count = 0;
-  foreach ($tasks_list as $value) {
-    if ($project_name === $value["TaskCategory"]) {
+  foreach ($tasks_list as $tasks) {
+    if ($project_id === $tasks["projects_id"]) { //обратить внимание на имя project_name
       $count++;
     }
   }
+  // var_dump($project_id);
+  // var_dump($tasks);
   return $count;
 }
+
+
 // предикаты
 function is_task_important($task) {
-  if (empty($task["TaskDeadline"])) {
+  if (empty($task["deadline"])) { //deadline будет переименован
       return false;
   }
 
   $curdate = strtotime (date('d.m.Y'));
-  $taskend = strtotime (date($task["TaskDeadline"]));
+  $taskend = strtotime (date($task["deadline"])); //deadline будет переименован
   $dif = floor(($taskend - $curdate) / 3600);
-  if ($dif <= 24 && $task["TaskStatus"] === false) {
+  if ($dif <= 24 && empty($task["done_date"])) { // условие делаем на empty дата закрытия задачи
     return true;
   }
   return false;

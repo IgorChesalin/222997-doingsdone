@@ -26,15 +26,16 @@
 <table class="tasks">
 
   <?php foreach ($tasks as $key => $val): ?>
+<!-- переименовываем ключи массива  -->
+    <?php if (empty($val["done_date"]) || $show_complete_tasks===1): ?>
 
-    <?php if ($val["TaskStatus"]===false || $show_complete_tasks===1): ?>
-
-    <tr class="tasks__item task <?php if ($val["TaskStatus"]): ?>task--completed<?php endif; ?> <?php if (is_task_important($val)): ?>task--important<?php endif; ?>">
+    <tr class="tasks__item task <?php if (!empty($val["done_date"])): ?>task--completed<?php endif; ?> <?php if (is_task_important($val)): ?>task--important<?php endif; ?>">
 
         <td class="task__select">
             <label class="checkbox task__checkbox">
-                <input class="checkbox__input visually-hidden task__checkbox" <?php if ($val["TaskStatus"]): ?>checked<?php endif; ?> type="checkbox">
-                <span class="checkbox__text"><?= htmlspecialchars($val["TaskTopic"]);?></span>
+              <!-- переименовываем ключи массива  -->
+                <input class="checkbox__input visually-hidden task__checkbox" <?php if (!empty($val["done_date"])): ?>checked<?php endif; ?> type="checkbox">
+                <span class="checkbox__text"><?= htmlspecialchars($val["title"]);?></span>
             </label>
         </td>
 
@@ -43,7 +44,8 @@
         </td>
 
         <td class="task__date">
-            <?= htmlspecialchars($val["TaskDeadline"]);?>
+          <!-- переделать формат даты -->
+            <?= htmlspecialchars($val["deadline"]);?>
         </td>
 
     </tr>
