@@ -1,5 +1,14 @@
 <?php
 
+$_GET["project"] = "project";
+if (isset($_GET["project"])) {
+  $project = (int)$_GET["project"];
+}
+  else {
+    $project = "#";
+    echo "error";
+  }
+
 // соединяемся с бд
 $con = mysqli_connect("localhost", "root", "", "222997-doingsdone");
   if ($con === false) {
@@ -12,6 +21,7 @@ mysqli_set_charset($con, "utf8");
 // подключает функции и базу
 require('functions.php');
 require('data.php');
+
 
 
 // получаем контент с помощью функции шаблонизатора
