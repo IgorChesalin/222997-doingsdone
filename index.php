@@ -1,13 +1,11 @@
 <?php
 
-$_GET["project"] = "project";
+//проверка на существование
+$selected_project = null;
 if (isset($_GET["project"])) {
-  $project = (int)$_GET["project"];
+  $selected_project = (int)$_GET["project"];
 }
-  else {
-    $project = "#";
-    echo "error";
-  }
+
 
 // соединяемся с бд
 $con = mysqli_connect("localhost", "root", "", "222997-doingsdone");
@@ -38,7 +36,7 @@ $layout = include_template('layout.php', [
   'content' => $content,
   'title' => $title,
   'projects' => $projects,
-  'tasks' => $tasks
+  'tasks' => $all_tasks
 ]);
 
 // выводим лейаут
