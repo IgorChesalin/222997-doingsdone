@@ -19,14 +19,13 @@ function include_template($name, $data) {
 
 
 function count_tasks($tasks_list, $project_id) {
+  
   $count = 0;
   foreach ($tasks_list as $tasks) {
     if ($project_id === $tasks["projects_id"]) { //обратить внимание на имя project_name
       $count++;
     }
   }
-  // var_dump($project_id);
-  // var_dump($tasks);
   return $count;
 }
 
@@ -45,6 +44,4 @@ function is_task_important($task) {
   }
   return false;
 }
-
-
 ?>
