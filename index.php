@@ -17,17 +17,24 @@ $con = mysqli_connect("localhost", "root", "", "222997-doingsdone");
 mysqli_set_charset($con, "utf8");
 
 // подключает функции и базу
+require('mysql_helper.php');
 require('functions.php');
 require('data.php');
 
 
 
 // получаем контент с помощью функции шаблонизатора
-$content = include_template('index.php', [
-  // название переменной в шаблоне => значение переменной
-  'show_complete_tasks' => $show_complete_tasks,
-  'tasks' => $tasks
-]);
+if (http_response_code() === 404) {
+  $content = include_template('404.php', []);
+}
+  else {
+    $content = include_template('index.php', [
+      // название переменной в шаблоне => значение переменной
+      'show_complete_tasks' => $show_complete_tasks,
+      'tasks' => $tasks
+    ]);
+  }
+
 // присваиваем тайтл
 $title = "Дела в порядке";
 
