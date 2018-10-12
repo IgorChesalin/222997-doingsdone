@@ -16,11 +16,18 @@ $con = mysqli_connect("localhost", "root", "", "222997-doingsdone");
 // устанавливаем кодировку
 mysqli_set_charset($con, "utf8");
 
-// подключает функции и базу
+// подключает функции и базу // поправить
 require('mysql_helper.php');
 require('functions.php');
 require('data.php');
 
+$errors = [];
+
+$template = "index.php";
+if (isset($_GET["add-task"])) {
+  $template = "add-task.php";
+  require "add-task.php";
+}
 
 
 // получаем контент с помощью функции шаблонизатора
@@ -28,12 +35,15 @@ if (http_response_code() === 404) {
   $content = include_template('404.php', []);
 }
   else {
-    $content = include_template('index.php', [
+    $content = include_template($template, [
       // название переменной в шаблоне => значение переменной
       'show_complete_tasks' => $show_complete_tasks,
-      'tasks' => $tasks
+      'tasks' => $tasks,
+      'projects' => $projects,
+      'errors' => $errors
     ]);
   }
+
 
 // присваиваем тайтл
 $title = "Дела в порядке";
@@ -47,6 +57,8 @@ $layout = include_template('layout.php', [
 ]);
 
 // выводим лейаут
+
 print($layout);
+
 
 ?>

@@ -3,8 +3,6 @@
 $show_complete_tasks = rand(0, 1);
 $user = ["id" => 1, "name" => "Константин"]; //  подставляем в запросах user[name] или user[id]  -- это наша глобальная переменная
 
-//подготовленные выражения
-
 
 // массив проектов (название проекта)
 $projects = [];
@@ -13,16 +11,6 @@ $stmt = db_get_prepare_stmt($con, $sql);
 mysqli_stmt_execute($stmt);
 $res = mysqli_stmt_get_result($stmt);
 $projects = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
-// $res = mysqli_query($con, $sql);
-//   if($res !== false) {
-// $projects = mysqli_fetch_all($res, MYSQLI_ASSOC);
-//
-// }
-//  else {
-//    $projects = [];
-//
-//}
 
 if ($selected_project !== null) {
     $is_project_exists = false;
