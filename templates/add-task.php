@@ -1,9 +1,9 @@
         <h2 class="content__main-heading">Добавление задачи</h2>
 
         <form class="form"  action="index.php?add-task" method="post">
+<!-- НАЗВАНИЕ -->
           <div class="form__row">
             <label class="form__label" for="title">Название <sup>*</sup></label>
-
             <input
               class="form__input <?=isset($errors["title"]) ? 'form__input--error' : ''?>"
               type="text"
@@ -21,16 +21,29 @@
             <?php endif;?>
           </div>
 
+<!-- ПРОЕКТ -->
           <div class="form__row">
             <label class="form__label" for="project">Проект <sup>*</sup></label>
-
-            <select class="form__input form__input--select" name="project" id="project">
+            <select
+              class="form__input form__input--select <?=isset($errors["project"]) ? 'form__input--error' : ''?>"
+              name="project"
+              id="project"
+              >
               <?php foreach ($projects as $project): ?>
                 <option value="<?=($project['id']);?>"><?= htmlspecialchars($project["title"]);?></option>
               <?php endforeach; ?>
             </select>
+
+            <?php if (isset($errors["project"])):?>
+              <p class="form__message">
+                <span class="form__message error-message">
+                  <?=$errors["project"];?>
+                </span>
+              </p>
+            <?php endif;?>
           </div>
 
+<!-- ДАТА -->
           <div class="form__row">
             <label class="form__label" for="date">Дата выполнения</label>
 
