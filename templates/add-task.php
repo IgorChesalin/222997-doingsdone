@@ -1,6 +1,5 @@
         <h2 class="content__main-heading">Добавление задачи</h2>
-
-        <form class="form"  action="index.php?add-task" method="post">
+        <form class="form"  action="index.php?add-task" method="post" enctype="multipart/form-data">
 <!-- НАЗВАНИЕ -->
           <div class="form__row">
             <label class="form__label" for="title">Название <sup>*</sup></label>
@@ -11,6 +10,7 @@
               id="title"
               value="<?=isset($_POST["title"]) ? htmlspecialchars($_POST["title"]) : ''?>"
               placeholder="Введите название"
+              required
             >
             <?php if (isset($errors["title"])):?>
               <p class="form__message">
@@ -30,7 +30,9 @@
               id="project"
               >
               <?php foreach ($projects as $project): ?>
-                <option value="<?=($project['id']);?>"><?= htmlspecialchars($project["title"]);?></option>
+                <option value="<?=($project['id']);?>" <?=isset($_POST["project"]) && ($project['id'] === (int)$_POST["project"]) ? "selected" : ''?>>
+                    <?= htmlspecialchars($project["title"]);?>
+                </option>
               <?php endforeach; ?>
             </select>
 
@@ -46,13 +48,25 @@
 <!-- ДАТА -->
           <div class="form__row">
             <label class="form__label" for="date">Дата выполнения</label>
-
-            <input class="form__input form__input--date" type="date" name="date" id="date" value="" placeholder="Введите дату в формате ДД.ММ.ГГГГ">
+            <input class="form__input form__input--date <?=isset($errors["date"]) ? 'form__input--error' : ''?>"
+            type="date"
+            name="date"
+            id="date"
+            value="<?=isset($_POST["date"]) ? htmlspecialchars($_POST["date"]) : ''?>"
+            placeholder="Введите дату в формате ДД.ММ.ГГГГ"
+            >
+            <?php if (isset($errors["date"])):?>
+              <p class="form__message">
+                <span class="form__message error-message">
+                  <?=$errors["date"];?>
+                </span>
+              </p>
+            <?php endif;?>
           </div>
 
+<!-- ФАЙЛ -->
           <div class="form__row">
             <label class="form__label" for="preview">Файл</label>
-
             <div class="form__input-file">
               <input class="visually-hidden" type="file" name="preview" id="preview" value="">
 

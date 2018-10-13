@@ -19,7 +19,7 @@ function include_template($name, $data) {
 
 
 function count_tasks($tasks_list, $project_id) {
-  
+
   $count = 0;
   foreach ($tasks_list as $tasks) {
     if ($project_id === $tasks["projects_id"]) { //обратить внимание на имя project_name
