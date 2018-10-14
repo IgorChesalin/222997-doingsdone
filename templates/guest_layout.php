@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body class="body-background">
   <h1 class="visually-hidden">Дела в порядке</h1>
 
   <div class="page-wrapper">
-    <div class="container container--with-sidebar">
+    <div class="container">
       <header class="main-header">
         <a href="#">
           <img src="../img/logo.png" width="153" height="42" alt="Логитип Дела в порядке">
@@ -24,15 +24,7 @@
       </header>
 
       <div class="content">
-        <section class="content__side">
-          <p class="content__side-info">Если у вас уже есть аккаунт, авторизуйтесь на сайте</p>
-
-          <a class="button button--transparent content__side-button" href="index.php?auth">Войти</a>
-        </section>
-
-        <main class="content__main">
-          <?= $content;?>
-        </main>
+        <?= $content;?>
       </div>
     </div>
   </div>
@@ -93,5 +85,6 @@
       </div>
     </div>
   </footer>
+
 </body>
 </html>
