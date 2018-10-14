@@ -7,7 +7,8 @@ USE `222997-doingsdone`;
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY, -- создаем первичный ключ, даем тип число, база заполняет его автоматически, обозначаем, что это первичный ключ
   email CHAR(128) NOT NULL, -- класс короткий текст
-  password CHAR(64) NOT NULL, -- максимальная размерность в скобках
+  password CHAR(64) NOT NULL,
+  name CHAR(64) NOT NULL, -- максимальная размерность в скобках
   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   contact TEXT DEFAULT NULL
 );

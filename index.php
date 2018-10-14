@@ -29,6 +29,12 @@ if (isset($_GET["add-task"])) {
   require "add-task.php";
 }
 
+$layout_template = "layout.php";
+if (isset($_GET["reg"])) {
+  $layout_template = "enter_layout.php";
+  $template = "register.php";
+  require "reg.php";
+}
 
 // получаем контент с помощью функции шаблонизатора
 if (http_response_code() === 404) {
@@ -49,7 +55,8 @@ if (http_response_code() === 404) {
 $title = "Дела в порядке";
 
 // помещаем контент и данные массивов в лейаут
-$layout = include_template('layout.php', [
+
+$layout = include_template($layout_template, [
   'content' => $content,
   'title' => $title,
   'projects' => $projects,
