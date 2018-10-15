@@ -37,6 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ]
       );
       $res = mysqli_stmt_execute($stmt);
+
+      $email = mysqli_real_escape_string($con, $_POST["email"]);
+      $sql = "SELECT * FROM users WHERE email = '$email'";
+      $res = mysqli_query($con, $sql);
+      $user = $res ? mysqli_fetch_array($res, MYSQLI_ASSOC) : null;
+      $_SESSION["user"] = $user;
+
       header("Location: /index.php");
     }
 }

@@ -27,8 +27,7 @@
                     </div>
 
                     <div class="user-menu__data">
-                        <p><?=isset($_SESSION["user"])?></p>
-
+                        <p><? echo($_SESSION["user"]["name"]); ?></p>
                         <a href="session_destroy.php">Выйти</a>
                     </div>
                 </div>
