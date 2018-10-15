@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if (empty($_SESSION["user"]) && !isset($_GET["guest"]) && !isset($_GET["reg"]) && !isset($_GET["auth"])) {
+  header("Location: /index.php?guest");
+}
+
 //проверка на существование
 $selected_project = null;
 if (isset($_GET["project"])) {
@@ -34,6 +40,12 @@ if (isset($_GET["reg"])) {
   $layout_template = "enter_layout.php";
   $template = "register.php";
   require "reg.php";
+}
+
+// для add project.php
+if (isset($_GET["add-project-s"])) {
+  $template = "add-project-tmpl.php";
+  require "add-project-s.php";
 }
 
 // получаем контент с помощью функции шаблонизатора
