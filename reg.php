@@ -37,6 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ]
       );
       $res = mysqli_stmt_execute($stmt);
-        header("Location: /index.php");
+      header("Location: /index.php");
     }
 }
