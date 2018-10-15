@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="user-menu__data">
-                        <p><? echo($_SESSION["user"]["name"]); ?></p>
+                        <p><?=(isset($_SESSION["user"]) ? $_SESSION["user"]["name"] :'';?></p>
                         <a href="session_destroy.php">Выйти</a>
                     </div>
                 </div>
