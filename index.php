@@ -2,11 +2,9 @@
 
 session_start();
 
-
 if (empty($_SESSION["user"]) && !isset($_GET["guest"]) && !isset($_GET["reg"]) && !isset($_GET["auth"])) {
   header("Location: /index.php?guest");
 }
-
 
 //проверка на существование
 $selected_project = null;
@@ -31,6 +29,10 @@ require('data.php');
 
 $errors = [];
 
+if (isset($_GET["check"])) {
+  require "status.php";
+}
+
 $template = "index.php";
 if (isset($_GET["add-task"])) {
   $template = "add-task.php";
@@ -44,6 +46,12 @@ if (isset($_GET["reg"]) && empty($_SESSION["user"])) {
   require "reg.php";
 }
 
+
+// для add project.php
+if (isset($_GET["add-project-s"])) {
+  $template = "add-project-tmpl.php";
+  require "add-project-s.php";
+}
 if (isset($_GET["auth"]) && empty($_SESSION["user"])) {
   $layout_template = "enter_layout.php"; // переименовать
   $template = "auth.php";
@@ -53,6 +61,7 @@ if (isset($_GET["auth"]) && empty($_SESSION["user"])) {
 if (isset($_GET["guest"]) && empty($_SESSION["user"])) {
   $layout_template = "guest_layout.php";
   $template = "guest.php";
+
 }
 
 // получаем контент с помощью функции шаблонизатора

@@ -34,7 +34,12 @@
         <td class="task__select">
             <label class="checkbox task__checkbox">
               <!-- переименовываем ключи массива  -->
-                <input class="checkbox__input visually-hidden task__checkbox" <?php if (!empty($val["done_date"])): ?>checked<?php endif; ?> type="checkbox">
+                <input
+                class="checkbox__input visually-hidden task__checkbox"
+                <?php if (!empty($val["done_date"])): ?>checked<?php endif; ?>
+                type="checkbox"
+                value="<?= $val["id"]?>"
+                >
                 <span class="checkbox__text"><?= htmlspecialchars($val["title"]);?></span>
             </label>
         </td>
