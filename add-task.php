@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $con,
       $sql,
       [
-        1,
+        $_SESSION["user"]["id"] ?? 0,
         $_POST["project"] ?? null,
         $_POST["date"] ?? null,
         null,
