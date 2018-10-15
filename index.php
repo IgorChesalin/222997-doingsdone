@@ -29,6 +29,10 @@ require('data.php');
 
 $errors = [];
 
+if (isset($_GET["check"])) {
+  require "status.php";
+}
+
 $template = "index.php";
 if (isset($_GET["add-task"])) {
   $template = "add-task.php";
