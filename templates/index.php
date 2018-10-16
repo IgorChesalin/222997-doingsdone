@@ -8,10 +8,10 @@
 
 <div class="tasks-controls">
     <nav class="tasks-switch">
-        <a href="/" class="tasks-switch__item tasks-switch__item--active">Все задачи</a>
-        <a href="/" class="tasks-switch__item">Повестка дня</a>
-        <a href="/" class="tasks-switch__item">Завтра</a>
-        <a href="/" class="tasks-switch__item">Просроченные</a>
+        <a href="/index.php?all" class="tasks-switch__item <?=isset($_GET["all"]) ? 'tasks-switch__item--active' : ''?>">Все задачи</a>
+        <a href="/index.php?today" class="tasks-switch__item <?=isset($_GET["today"]) ? 'tasks-switch__item--active' : ''?>">Повестка дня</a>
+        <a href="/index.php?tomorrow" class="tasks-switch__item <?=isset($_GET["tomorrow"]) ? 'tasks-switch__item--active' : ''?>">Завтра</a>
+        <a href="/index.php?overdue" class="tasks-switch__item <?=isset($_GET["overdue"]) ? 'tasks-switch__item--active' : ''?>">Просроченные</a>
     </nav>
 
     <label class="checkbox">
@@ -45,11 +45,12 @@
         </td>
 
         <td class="task__file">
-            <a class="download-link" href="#"></a>
+          <?php if (!empty($val["file"])):?>
+            <a download class="download-link" href="<?= htmlspecialchars($val["file"]);?>"></a>
+          <?php endif; ?>
         </td>
 
         <td class="task__date">
-          <!-- переделать формат даты -->
             <?= htmlspecialchars($val["deadline"]);?>
         </td>
 
