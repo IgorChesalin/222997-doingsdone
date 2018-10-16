@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Подключение шаблонов и вывод верстки
+ *
+ * @param string $name Имя шаблона
+ * @param array $data Массив данных
+ *
+ * @return string Результат отрисовки страницы
+ */
 function include_template($name, $data) {
     $name = 'templates/' . $name; // путь к шаблону
     $result = ''; //будем возвращать пустую строку, независимо от данных/шаблонов
@@ -17,7 +25,14 @@ function include_template($name, $data) {
     return $result; // возвращаем результат отрисовки шаблона
 }
 
-
+/**
+ * Счетчик задач в проекте
+ *
+ * @param array $tasks_list  массив всех задач с данными
+ * @param int $project_id Индекс проекта
+ *
+ * @return Количество задач в проекте
+ */
 function count_tasks($tasks_list, $project_id) {
 
   $count = 0;
@@ -30,7 +45,13 @@ function count_tasks($tasks_list, $project_id) {
 }
 
 
-// предикаты
+/**
+ * Выделение приоритетных задач на основании наличия дедлайна
+ *
+ * @param string  $task Дата дедлайна при ее наличии
+ *
+ * @return bool Возращаем булево значение, на этом основании выделяем приоритетные задачи
+ */
 function is_task_important($task) {
   if (empty($task["deadline"])) { //deadline будет переименован
       return false;

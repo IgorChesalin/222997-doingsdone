@@ -1,9 +1,5 @@
 USE `222997-doingsdone`;
 
-INSERT INTO users (email, password, name) VALUES
-  ("igor@gmail.com", "12345", "igor"),
-  ("masha@gmail.com", "54321", "masha");
-
 INSERT INTO projects (title, users_id) VALUES
   ("Входящие", 1),
   ("Учеба", 1),
