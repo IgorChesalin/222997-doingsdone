@@ -29,6 +29,7 @@
               name="project"
               id="project"
               >
+              <option value="">
               <?php foreach ($projects as $project): ?>
                 <option value="<?=($project['id']);?>" <?=isset($_POST["project"]) && ($project['id'] === (int)$_POST["project"]) ? "selected" : ''?>>
                     <?= htmlspecialchars($project["title"]);?>

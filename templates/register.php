@@ -28,7 +28,7 @@
     id="password"
     value=""
     placeholder="Введите пароль"
-
+    
     >
     <?php if (isset($errors["password"])):?>
     <p class="form__message"><?=$errors["password"];?></p>

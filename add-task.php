@@ -4,9 +4,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
    if (empty($_POST["title"])) {
     $errors["title"] = "Не заполнено";
   }
-  if (!in_array($_POST["project"], array_column($projects, "id"))) {
+  if (isset($_GET["project"])) {
+    !in_array($_POST["project"], array_column($projects, "id"));
     $errors["project"] = "Выберите существующий проект";
-    }
+      }
+
+
 
   // ПРОВЕРИТЬ ДАТУ НА СООТВЕТСТВИЕ ФОРМАТУ НЕЛЬЗЯ Т.К. ОТПРАВЛЯЕТСЯ НЕ В ТОМ ВИДЕ КАК МЫ ЕГО ВИДИМ . !!!!!
   // if (!empty($_POST["date"])) {
@@ -20,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $file_path = __DIR__ . "/";
     move_uploaded_file($_FILES["preview"]["tmp_name"], $file_path . $file_name);
   }
+
+
 
   if (!$errors) {
     $sql = "INSERT INTO tasks (users_id, projects_id, create_date, deadline, done_date, title, file) VALUES (?, ?, NOW(), ?, ?, ?, ?)";
