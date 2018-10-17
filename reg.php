@@ -9,12 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $errors["email"] = "Email должен быть корректным";
     }
-    if (empty($_POST["password"])) {
-    $errors["password"] = "Не заполнено";
-    }
     if (empty($_POST["name"])) {
-    $errors["name"] = "Не заполнено";
+    $errors["name"] = "Введите имя";
     }
+    if (empty($_POST["password"])) {
+    $errors["password"] = "Введите пароль";
+    }
+
 
     $email = mysqli_real_escape_string($con, $_POST["email"]);
     $sql = "SELECT id FROM users WHERE email = '$email'";
