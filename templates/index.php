@@ -51,7 +51,7 @@
         </td>
 
         <td class="task__date">
-            <?= htmlspecialchars($val["deadline"]);?>
+            <?= htmlspecialchars(date_form($val["deadline"]));?>
         </td>
 
     </tr>

@@ -11,7 +11,7 @@
       id="email"
       value="<?=isset($_POST["email"]) ? htmlspecialchars($_POST["email"]) : ''?>"
       placeholder="Введите e-mail"
-
+      required
     >
     <?php if (isset($errors["email"])):?>
     <p class="form__message"><?=$errors["email"];?></p>
@@ -28,7 +28,7 @@
     id="password"
     value=""
     placeholder="Введите пароль"
-    
+    required
     >
     <?php if (isset($errors["password"])):?>
     <p class="form__message"><?=$errors["password"];?></p>
@@ -45,7 +45,7 @@
     id="name"
     value="<?=isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : ''?>"
     placeholder="Введите имя"
-
+    required
     >
     <?php if (isset($errors["name"])):?>
     <p class="form__message"><?=$errors["name"];?></p>

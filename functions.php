@@ -65,4 +65,20 @@ function is_task_important($task) {
   }
   return false;
 }
-?>
+
+
+/**
+ * Форматируем отображение даты в ДД.ММ.ГГГГ
+ *
+ * @param string $date передаем дату
+ *
+ * @return string Возвращаем дату в необходимом формате
+ */
+function date_form($date) {
+  if (empty($date)) {
+      return "";
+  }
+  $date_stamp = strtotime ($date);
+  $date = date("d.m.Y", $date_stamp);
+  return $date;
+}

@@ -6,6 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   //  if (empty($_POST["project_name"])) {
   //   $errors["project_name"] = "Не заполнено";
   // }
+  if (isset($_GET["project"])) {
+    !in_array($_POST["project"], array_column($projects, "id"));
+    $errors["project"] = "Выберите существующий проект";
+      }
 
   $new_project = mysqli_real_escape_string($con, $_POST["project_name"]);
   $sql = "SELECT * FROM projects WHERE title = '$new_project'";
