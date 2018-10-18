@@ -1,6 +1,11 @@
 <?php
-// показывать или нет TaskStatusные задачи тест
-$show_complete_tasks = rand(0, 1);
+
+// показывать или нет TaskStatusные задачи
+$show_complete_tasks = 0;
+if (isset($_GET["show_completed"])) {
+    $show_complete_tasks = intval($_GET["show_completed"]);
+}
+
 
 // массив проектов (название проекта)
 $projects = [];

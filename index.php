@@ -27,6 +27,8 @@ require('mysql_helper.php');
 require('functions.php');
 require('data.php');
 
+
+
 $errors = [];
 
 if (isset($_GET["check"])) {
